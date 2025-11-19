@@ -10,10 +10,17 @@ This repository contains:
 ---
 
 ## How to Run
+All taggers accept the following flags:
+
+```
+--task <ner|pos>
+--use_pretrained <True|False>   # if supported by that part
+```
 
 ### Part 1 – Window-Based Tagger
 ```
-python tagger1.py --train train.txt --dev dev.txt --test test.txt --output output_file
+python tagger1.py --task <ner|pos>
+
 ```
 
 ### Part 2 – Most Similar Words
@@ -23,23 +30,32 @@ python top_k.py --word <WORD> --k 5
 
 ### Part 3 – Tagger with Pre-trained Embeddings
 ```
-python tagger2.py --train train.txt --dev dev.txt --test test.txt                   --vectors vectors.txt --vocab words.txt
+python tagger1.py --task <ner|pos> --use_pretrained True
+
 ```
 
 ### Part 4 – Tagger with Subword Units
 ```
-python tagger3.py --train train.txt --dev dev.txt --test test.txt --use_subwords
+python tagger3.py --task <ner|pos> --use_pretrained <True|False>
+
 ```
 
 ### Part 5 – CNN-Based Subword Model
 ```
-python tagger4.py --train train.txt --dev dev.txt --test test.txt --use_cnn
+python tagger4.py --task <ner|pos>
+```
+optional flag:
+
+```
+python tagger4.py --task <ner|pos> --use_pretrained False
 ```
 
 ### Part 6 – Character-Based Language Model
 ```
-python langmodel.py --train corpus.txt --k 5 --sample_length 100
+python langmodel.py --train corpus.txt --k <n> --sample_length <n>
+
 ```
+
 
 ---
 
